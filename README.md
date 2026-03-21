@@ -36,6 +36,26 @@ Install the custom agents directly from this README.
 
 If subagents are not being invoked, verify that `chat.customAgentInSubagent.enabled` is enabled and that the specialist agents are not hidden in the custom agent manager.
 
+## Skill
+
+This repository also includes the `dotnet-logging` skill.
+
+[dotnet-logging](https://github.com/joeymds/dotnet-orchestration/tree/main/.github/skills/dotnet-logging)<br />[![View Skill Source](https://img.shields.io/badge/GitHub-View_Skill-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/joeymds/dotnet-orchestration/tree/main/.github/skills/dotnet-logging)
+
+VS Code currently documents one-click install links for custom agents, but not an equivalent install deep link for standalone skills.
+
+To use the skill:
+
+1. Copy the entire `.github/skills/dotnet-logging/` directory into your repository or personal skills folder.
+2. Keep the directory name and the `name` field aligned as `dotnet-logging`.
+3. Open Copilot Chat and invoke the skill with `/dotnet-logging`, or let Copilot load it automatically when the task matches the description.
+
+Personal skill locations supported by VS Code include:
+
+- `~/.copilot/skills/`
+- `~/.claude/skills/`
+- `~/.agents/skills/`
+
 ## What The Orchestrator Does
 
 The Orchestrator is responsible for:
