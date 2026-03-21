@@ -4,6 +4,38 @@ This repository defines a small multi-agent orchestration setup for GitHub Copil
 
 The main agent is an Orchestrator that does not implement features itself. Its job is to take a user request, break it into phases, delegate the work to specialist agents, coordinate execution order, and verify that the final result hangs together.
 
+## Install
+
+Install the custom agents directly from this README.
+
+| Title | Type | Description |
+| ----- | ---- | ----------- |
+| [Orchestrator](https://github.com/joeymds/dotnet-orchestration/blob/main/.github/agents/orchestrator.agent.md)<br />[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/agent?url=vscode%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fjoeymds%2Fdotnet-orchestration%2Fmain%2F.github%2Fagents%2Forchestrator.agent.md)<br />[![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/agent?url=vscode-insiders%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fjoeymds%2Fdotnet-orchestration%2Fmain%2F.github%2Fagents%2Forchestrator.agent.md) | Agent | High-level task orchestrator that plans, delegates, coordinates, and validates multi-agent work without performing implementation. |
+| [Planner](https://github.com/joeymds/dotnet-orchestration/blob/main/.github/agents/planner.agent.md)<br />[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/agent?url=vscode%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fjoeymds%2Fdotnet-orchestration%2Fmain%2F.github%2Fagents%2Fplanner.agent.md)<br />[![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/agent?url=vscode-insiders%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fjoeymds%2Fdotnet-orchestration%2Fmain%2F.github%2Fagents%2Fplanner.agent.md) | Agent | Creates comprehensive implementation plans by researching the codebase, consulting documentation, and identifying edge cases. |
+| [DotNet Coder](https://github.com/joeymds/dotnet-orchestration/blob/main/.github/agents/dotnet-coder.agent.md)<br />[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/agent?url=vscode%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fjoeymds%2Fdotnet-orchestration%2Fmain%2F.github%2Fagents%2Fdotnet-coder.agent.md)<br />[![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/agent?url=vscode-insiders%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fjoeymds%2Fdotnet-orchestration%2Fmain%2F.github%2Fagents%2Fdotnet-coder.agent.md) | Agent | Writes maintainable .NET code using clean architecture and strong engineering practices. |
+| [Designer](https://github.com/joeymds/dotnet-orchestration/blob/main/.github/agents/designer.agent.md)<br />[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/agent?url=vscode%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fjoeymds%2Fdotnet-orchestration%2Fmain%2F.github%2Fagents%2Fdesigner.agent.md)<br />[![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://aka.ms/awesome-copilot/install/agent?url=vscode-insiders%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fjoeymds%2Fdotnet-orchestration%2Fmain%2F.github%2Fagents%2Fdesigner.agent.md) | Agent | Handles all UI and UX design tasks. |
+
+## Quick Start
+
+1. Install the agents using the buttons above.
+2. Open VS Code Settings and enable these settings:
+
+```json
+{
+  "chat.agent.enabled": true,
+  "chat.agentsControl.enabled": true,
+  "chat.customAgentInSubagent.enabled": true,
+  "chat.useAgentSkills": true,
+  "github.copilot.chat.agentCustomizationSkill.enabled": true
+}
+```
+
+3. Open Copilot Chat in Agent mode.
+4. Select the Orchestrator agent.
+5. Send your feature or implementation request.
+
+If subagents are not being invoked, verify that `chat.customAgentInSubagent.enabled` is enabled and that the specialist agents are not hidden in the custom agent manager.
+
 ## What The Orchestrator Does
 
 The Orchestrator is responsible for:
