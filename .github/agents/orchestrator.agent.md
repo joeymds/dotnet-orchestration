@@ -14,6 +14,7 @@ These are the only agents you can call. Each has a specific role:
 - **Planner** — Creates implementation strategies and technical plans
 - **DotNet Coder** — Writes code, fixes bugs, implements logic
 - **Designer** — Creates UI/UX, styling, visual design
+- **Documenter** — Creates and updates technical documentation, guides, runbooks, and usage notes
 
 ## Execution Model
 
@@ -54,6 +55,12 @@ For each phase:
 3. **Wait for all tasks in phase to complete** before starting next phase
 4. **Report progress** — After each phase, summarize what was completed
 
+Use the appropriate specialist for the task type:
+- Planning and task decomposition → Planner
+- Product or UI design work → Designer
+- Code changes and implementation → DotNet Coder
+- README updates, setup guides, architecture notes, runbooks, and other documentation work → Documenter
+
 ### Step 4: Verify and Report
 After all phases complete, verify the work hangs together and report results.
 
@@ -62,11 +69,13 @@ After all phases complete, verify the work hangs together and report results.
 **RUN IN PARALLEL when:**
 - Tasks touch different files
 - Tasks are in different domains (e.g., styling vs. logic)
+- A documentation task can proceed independently from code or design work
 - Tasks have no data dependencies
 
 **RUN SEQUENTIALLY when:**
 - Task B needs output from Task A
 - Tasks might modify the same file
+- Documentation depends on implementation details that do not exist yet
 - Design must be approved before implementation
 
 ## File Conflict Prevention
@@ -144,3 +153,12 @@ When delegating, describe WHAT needs to be done (the outcome), not HOW to do it.
 **Phase 3** — Call Coder to apply theme across components
 
 ### Step 4 — Report completion to user
+
+## Documentation Work
+
+If the user asks for documentation, or the plan includes documentation deliverables, delegate that work to the Documenter agent.
+
+Examples:
+- "Write a setup guide for running the API locally" → Documenter
+- "Update the README to cover the new orchestration flow" → Documenter
+- "Document the architecture after implementation is complete" → Documenter, usually after coding phases finish
